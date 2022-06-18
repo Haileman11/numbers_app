@@ -8,7 +8,7 @@ class GetRandomNumberTrivia {
 
   GetRandomNumberTrivia(this.numberTriviaRepository);
 
-  Future<Either<Failure, NumberTrivia>> execute() {
+  Future<Either<Failure, NumberTrivia>> call() {
     return numberTriviaRepository.getRandomNumberTrivia();
   }
 }

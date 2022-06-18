@@ -26,7 +26,7 @@ void main() {
     when(mockNumberTriviaRepository.getRandomNumberTrivia())
         .thenAnswer((realInvocation) async => Right(testNumberTrivia));
     //execute
-    final result = await usecase.execute();
+    final result = await usecase.call();
     //verify
     expect(result, Right(testNumberTrivia));
     verify(mockNumberTriviaRepository.getRandomNumberTrivia());
