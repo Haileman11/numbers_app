@@ -30,7 +30,7 @@ void main() {
           .thenAnswer((_) async => true);
       numberTriviaLocalDatasourceImpl.cacheNumberTrivia(numberTriviaModel);
       verify(mockSharedPreferences.setString(
-          CACHED_NUMBER_TRIVIA, numberTriviaModel.toJson().toString()));
+          CACHED_NUMBER_TRIVIA, json.encode(numberTriviaModel.toJson())));
     });
   });
   group('getCachedNumberTrivia', () {

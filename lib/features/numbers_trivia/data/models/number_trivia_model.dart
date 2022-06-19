@@ -9,6 +9,6 @@ class NumberTriviaModel extends NumberTrivia {
   }
 
   Map<String, dynamic> toJson() {
-    return {'number': number, 'text': text};
+    return {'text': text, 'number': number};
   }
 }

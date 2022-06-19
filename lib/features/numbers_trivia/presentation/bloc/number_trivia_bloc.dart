@@ -26,11 +26,12 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
     on<GetRandomNumberTriviaEvent>(_onGetRandomNumberTriviaEvent);
   }
 
-  _onGetConcreteNumberTriviaEvent(GetConcreteNumberTriviaEvent event,
+  Future<void> _onGetConcreteNumberTriviaEvent(
+      GetConcreteNumberTriviaEvent event,
       Emitter<NumberTriviaState> emitter) async {
     final resultEither =
         inputConverter.stringToUnsignedInteger(event.numberString);
-    resultEither.fold((failure) {
+    await resultEither.fold((failure) {
       emitter(Error(message: INVALID_INPUT_MESSAGE));
     }, (number) async {
       emitter(Loading());
@@ -46,7 +47,7 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
     });
   }
 
-  _onGetRandomNumberTriviaEvent(GetRandomNumberTriviaEvent event,
+  Future<void> _onGetRandomNumberTriviaEvent(GetRandomNumberTriviaEvent event,
       Emitter<NumberTriviaState> emitter) async {
     emitter(Loading());
     final resultEither = await getRandomNumberTrivia();

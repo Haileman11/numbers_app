@@ -22,4 +22,6 @@ class Loaded extends NumberTriviaState {
   final NumberTrivia numberTrivia;
 
   Loaded({required this.numberTrivia});
+  @override
+  List<Object> get props => [numberTrivia];
 }
